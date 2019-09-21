@@ -1,0 +1,17 @@
+
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h3>Continents</h3>
+  </div>
+  <div class="card-body shadow-lg">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let continent of continents"
+      (click)="onContinentSelected(continent.code)"><strong>{{continent.name}}</strong> -
+        ({{continent.code}})</li>
+    </ul>
+    <div *ngIf="loading">
+      Please wait while the data is being loaded
+    </div>
+  </div>
+ 
+</div>
