@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header bg-primary text-white d-flex sticky-top">
+    <h3 *ngIf="!loading" class="flex-grow-1">
+      <strong>{{currContinentDetails.name}}({{currContinentDetails.code}})</strong></h3>
+    <h3 *ngIf="loading" class="flex-grow-1">
+      Loading...
+    </h3>
+    <button class="btn btn-link text-white" (click)="goBack()">Back</button>
+  </div>
+  <div class="card-body shadow-lg">
+    <h5 *ngIf="loading">
+        Please wait while the data is being loaded.
+    </h5>
+    <ul *ngIf="!loading" class="list-group" id="accordion-parent">
+      <span *ngFor="let country of currContinentDetails.countries">
+        <li class="list-group-item w-100" data-toggle="collapse" [attr.data-target]="'#sub-'+country.code">
+          <strong>{{country.emoji}}&nbsp;{{country.name}}</strong> -
+          ({{country.code}})
+        </li>
+        <div id="sub-{{country.code}}" class="p-0 collapse" data-parent="#accordion-parent">
+          <div class="bg-grey d-flex flex-row flex-wrap">
+            <div class="d-flex flex-column col-6 col-md-4 col-lg-3 border-bottom">
+              <strong>Country:</strong>
+              <span>{{country.name}}({{country.native}})</span>
+            </div>
+            <div class="d-flex flex-column col-6 col-md-4 col-lg-3 border-bottom">
+              <strong>Country Code:</strong>
+              <span>{{country.code}}</span>
+            </div>
+            <div class="d-flex flex-column col-6 col-md-4 col-lg-3 border-bottom">
+              <strong>National Flag:</strong>
+              <span>{{country.emoji}}</span>
+            </div>
+            <div class="d-flex flex-column col-6 col-md-4 col-lg-3 border-bottom">
+              <strong>Continent:</strong>
+              <span>{{country.continent.name}}</span>
+            </div>
+            <div class="d-flex flex-column col-6 col-md-4 col-lg-3 border-bottom">
+              <strong>Currency:</strong>
+              <span>{{country.currency}}</span>
+            </div>
+            <div class="d-flex flex-column col-6 col-md-4 col-lg-3 border-bottom">
+              <strong>Telephone Code:</strong>
+              <span>{{country.phone}}</span>
+            </div>
+            <div class="d-flex flex-column col-6 col-md-4 col-lg-3 border-bottom">
+              <strong>Official Languages:</strong>
+              <span>{{getLanguages(country.languages)}}</span>
+            </div>
+
+          </div>
+        </div>
+      </span>
+
+    </ul>
+  </div>
+
+</div>
