@@ -9,7 +9,7 @@
   </div>
   <div class="card-body shadow-lg">
     <h5 *ngIf="loading">
-        Please wait while the data is being loaded.
+        Please wait while the data is being loaded
     </h5>
     <ul *ngIf="!loading" class="list-group" id="accordion-parent">
       <span *ngFor="let country of currContinentDetails.countries">
